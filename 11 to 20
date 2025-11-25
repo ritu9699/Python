@@ -1,0 +1,116 @@
+11.Write a program to create a set from a list of integers. Then, identify and display all elements that are repeated in the original list. 
+
+nums = [1, 2, 2, 3, 4, 4, 5]
+dupes = {n for n in nums if nums.count(n) > 1}
+print(dupes)
+
+12.Create two sets, one representing students who play cricket and another representing students who play football. Write a program to display: 
+- Students who play both sports. 
+- Students who play only one sport.
+- Students who play neither sport (use a universal set).
+
+
+cricket = {"Amit", "Neha", "Ravi"}
+football = {"Neha", "Kiran", "Ravi"}
+all_students = {"Amit", "Neha", "Ravi", "Kiran", "Suresh"}
+
+print("Both:", cricket & football)
+print("Only one:", cricket ^ football)
+print("Neither:", all_students - (cricket | football))
+
+
+13.Create a set of tuples where each tuple contains a number and its square (e.g., `(2, 4)`). Write a program to filter out tuples where the square is even.
+
+pairs = {(x, x**2) for x in range(1, 10)}
+filtered = {p for p in pairs if p[1] % 2 != 0}
+print(filtered)
+
+14.Write a Python program to compare two sets and identify whether they are equivalent, one is a subset of the other, or if they have any common elements.
+
+A = {1, 2, 3}
+B = {2, 3, 4}
+
+print("Equivalent:", A == B)
+print("A subset of B:", A <= B)
+print("Common:", A & B)
+
+15.Write a Python program to create a nested dictionary representing a library system. Each key is a genre, and its value is another dictionary containing book titles and their respective authors. Display all books of a specific genre entered by the user.
+
+
+library = {
+    "Fiction": {"1984": "George Orwell", "The Alchemist": "Paulo Coelho"},
+    "Science": {"A Brief History of Time": "Stephen Hawking"}
+}
+
+genre = input("Enter genre: ")
+if genre in library:
+    for book, author in library[genre].items():
+        print(book, "by", author)
+else:
+    print("Genre not found")
+
+
+16.Create a dictionary with product names as keys and their prices as values. Write a program to:
+Find the product with the highest price.
+Apply a discount of 10% to all prices and display the updated dictionary
+
+
+products = {"Laptop": 70000, "Phone": 50000, "Tablet": 30000}
+max_product = max(products, key=products.get)
+print("Costliest:", max_product)
+discounted = {k: v*0.9 for k, v in products.items()}
+print("After 10% discount:", discounted)
+
+
+17.Write a program to merge two dictionaries where the keys are the same but the values are lists. 
+Combine the lists of values for duplicate keys.
+Example: Input: {'a': [1, 2], 'b': [3]} and {'a': [4], 'c': [5]}, Output: {'a': [1, 2, 4], 'b': [3], 'c': [5]}
+
+
+d1 = {'a': [1, 2], 'b': [3]}
+d2 = {'a': [4], 'c': [5]}
+merged = d1.copy()
+for k, v in d2.items():
+    merged[k] = merged.get(k, []) + v
+print(merged)
+
+
+18.Create a dictionary of student records where each key is a roll number and the value is another dictionary containing name, marks, and attendance. Write a program to: 
+- Find students with attendance below 75%. 
+- Calculate the average marks of all students.
+
+
+students = {
+    1: {"name": "Amit", "marks": 80, "attendance": 85},
+    2: {"name": "Neha", "marks": 70, "attendance": 65},
+    3: {"name": "Ravi", "marks": 90, "attendance": 95}
+}
+
+low_att = [s["name"] for s in students.values() if s["attendance"] < 75]
+avg = sum(s["marks"] for s in students.values()) / len(students)
+print("Low attendance:", low_att)
+print("Average marks:", avg)
+
+
+19.Write a Python program to group anagrams from a list of strings into a dictionary where the keys are sorted versions of the words, and the values are lists of anagrams. 
+Example: Input: `['listen', 'silent', 'enlist', 'hello', 'ohell']`, 
+Output: `{'eilnst': ['listen', 'silent', 'enlist'], 'ehllo': ['hello', 'ohell']}
+
+
+words = ['listen', 'silent', 'enlist', 'hello', 'ohell']
+anagrams = {}
+for w in words:
+    key = ''.join(sorted(w))
+    anagrams.setdefault(key, []).append(w)
+print(anagrams)
+
+
+20.Write a program to split a list of integers into two separate lists: - One containing only even numbers. - One containing only odd numbers.
+
+
+nums = [10, 11, 12, 13, 14]
+even = [x for x in nums if x % 2 == 0]
+odd = [x for x in nums if x % 2 != 0]
+print("Even:", even)
+print("Odd:", odd)
+
