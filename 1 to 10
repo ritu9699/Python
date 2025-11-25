@@ -1,0 +1,108 @@
+1.Write a Python program to input a list of integers. Identify and print all pairs of numbers whose sum is equal to a user-defined target value.
+
+nums = [1, 2, 3, 4, 5]
+target = 6
+
+for i in range(len(nums)):
+    for j in range(i+1, len(nums)):
+        if nums[i] + nums[j] == target:
+            print((nums[i], nums[j]))
+
+
+2.Create a list of dictionaries where each dictionary represents a student with their name, roll number, and marks. Write a program to display the name of the student with the highest marks
+
+students = [
+    {"name": "Amit", "roll": 1, "marks": 78},
+    {"name": "Neha", "roll": 2, "marks": 92},
+    {"name": "Ravi", "roll": 3, "marks": 85}
+]
+
+topper = max(students, key=lambda s: s["marks"])
+print("Topper:", topper["name"])
+
+
+3.Write a program to split a list of integers into two separate lists: 
+One containing only even numbers. 
+One containing only odd numbers.
+
+nums = [1, 2, 3, 4, 5, 6]
+even = [x for x in nums if x % 2 == 0]
+odd = [x for x in nums if x % 2 != 0]
+
+print("Even:", even)
+print("Odd:", odd)
+
+
+4.Write a Python program to rotate the elements of a list `n` positions to the right.
+
+nums = [1, 2, 3, 4, 5]
+n = 2
+n = n % len(nums)
+rotated = nums[-n:] + nums[:-n]
+print(rotated)
+
+5.Write a program to find all subsets of a list
+
+from itertools import combinations
+
+nums = [1, 2, 3]
+subsets = []
+for i in range(len(nums) + 1):
+    subsets += list(combinations(nums, i))
+print(subsets)
+
+
+6.Write a Python program to take a tuple of integers and generate a new tuple containing only the prime numbers.
+
+
+def is_prime(n):
+    if n < 2: return False
+    for i in range(2, int(n**0.5)+1):
+        if n % i == 0:
+            return False
+    return True
+
+nums = (10, 15, 3, 7, 20)
+primes = tuple(n for n in nums if is_prime(n))
+print(primes)
+
+
+7.Create a tuple containing employee data (ID, Name, Salary, Department). 
+Write a program to: - Extract salaries into a separate tuple. - Calculate the average salary.
+
+
+employees = (
+    (1, "Amit", 50000, "HR"),
+    (2, "Neha", 60000, "IT"),
+    (3, "Raj", 55000, "Sales")
+)
+
+salaries = tuple(e[2] for e in employees)
+avg = sum(salaries) / len(salaries)
+print("Salaries:", salaries)
+print("Average Salary:", avg)
+
+
+
+8.Write a program to merge two tuples of the same length into a single tuple of paired elements.
+
+a = (1, 2, 3)
+b = (4, 5, 6)
+merged = tuple(zip(a, b))
+print(merged)
+
+
+9.Write a Python program to sort a tuple of tuples based on the second value in each inner tuple. 
+
+t = ((1, 5), (2, 3), (4, 1))
+sorted_t = tuple(sorted(t, key=lambda x: x[1]))
+print(sorted_t)
+
+
+10.Create a tuple of strings. Write a program to find the longest string and its index in the tuple.
+
+
+words = ("apple", "banana", "grape", "strawberry")
+longest = max(words, key=len)
+print("Longest:", longest)
+
